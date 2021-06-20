@@ -12,8 +12,10 @@
     <jsp:include page="header.jsp" flush="true" />
 
 	<br/><br/>
+	<!--
 	<a href="/Login">ログイン（セッション生成）</a>
 	<br/><br/>
+	 -->
 	<a href="/Xss">クロスサイトスクリプティング（XSS）</a>
 	<br /><br/>
 	<a href="/Csrf">クロスサイトリクエストフォージェリ（CSRF）</a>

@@ -6,7 +6,7 @@
 --------------------------------------------------------
 
   CREATE TABLE "AIMAX"."BORAD" 
-   (	"RES_NAME" VARCHAR2(20 BYTE), 
+   (	"RES_NAME" VARCHAR2(40 BYTE), 
 	"SESSION_ID" VARCHAR2(40 BYTE), 
 	"RES_WRITE" VARCHAR2(1000 BYTE), 
 	"RES_DATE" VARCHAR2(21 BYTE)

@@ -20,7 +20,7 @@ import com.aimax.kyoiku.util.DBUtil;
  * Servlet implementation class BoardServlet
  */
 @WebServlet("/BoardServlet")
-public class BoardServlet extends HttpServlet {
+public class BoardServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -28,8 +28,8 @@ public class BoardServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		// ログインチェック
+		loginCheck(request, response);
 
 		// パラメータを取得
 		String inputText = request.getParameter("inputText");
@@ -78,13 +78,6 @@ public class BoardServlet extends HttpServlet {
 
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(Const.JSP_BOARD);
 	    dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

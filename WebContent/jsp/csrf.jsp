@@ -59,7 +59,7 @@ function addPost(form, name, value) {
 		<tr>
 			<td>URL</td>
 			<td>
-				<input type="text" id="urlTxt" size="80" value="https://111.108.206.210/astro/timeEntry"></input>
+				<input type="text" id="urlTxt" size="80" value="https://security-kyoiku.azurewebsites.net/Board"></input>
 			</td>
 		</tr>
 		<tr>

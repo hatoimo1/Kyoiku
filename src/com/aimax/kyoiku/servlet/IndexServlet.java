@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.aimax.kyoiku.constant.Const;
 
 @WebServlet("/IndexServlet")
-public class IndexServlet extends HttpServlet {
+public class IndexServlet extends BaseServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,18 +21,11 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		// ログインチェック
+		loginCheck(request, response);
 
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(Const.JSP_INDEX);
 	    dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

@@ -15,7 +15,7 @@ import com.aimax.kyoiku.constant.Const;
  * Servlet implementation class HttpHeaderInjectServlet
  */
 @WebServlet("/HttpHeaderInjectServlet")
-public class HttpHeaderInjectServlet extends HttpServlet {
+public class HttpHeaderInjectServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -23,8 +23,8 @@ public class HttpHeaderInjectServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		// ログインチェック
+		loginCheck(request, response);
 
 		String location = request.getParameter("location");
 
@@ -36,13 +36,6 @@ public class HttpHeaderInjectServlet extends HttpServlet {
 
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(Const.JSP_HTTPHEADERINJECT);
 	    dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

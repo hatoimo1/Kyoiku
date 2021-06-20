@@ -17,7 +17,7 @@ import com.aimax.kyoiku.constant.Const;
  * Servlet implementation class SessionHijackServlet
  */
 @WebServlet("/SessionHijackServlet")
-public class SessionHijackServlet extends HttpServlet {
+public class SessionHijackServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -26,8 +26,8 @@ public class SessionHijackServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		// ログインチェック
+		loginCheck(request, response);
 
 		LoginBean bean = new LoginBean();
 		Cookie cookie[] = request.getCookies();
@@ -43,14 +43,6 @@ public class SessionHijackServlet extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(Const.JSP_SESSIONHIJACK);
 		dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

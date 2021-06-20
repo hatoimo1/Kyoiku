@@ -135,4 +135,37 @@ public class DBUtil {
 
 		return list;
 	}
+
+	public static TableDataBean getUserInfoLogin(String accountId, String password) {
+
+		TableDataBean bean = null;
+		Connection con = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			con = new DBconnect().getConnection();
+			String sql = "SELECT * FROM USER_INFO WHERE ACCOUNT_ID = '" + accountId + "' AND 'password' = '" + password + "'";
+			st = con.prepareStatement(sql);
+			rs = st.executeQuery();
+			if (rs.next()) {
+				bean = new TableDataBean();
+				bean.setUserId(String.valueOf(rs.getInt("USER_ID")));
+				bean.setKanaMei(rs.getString("NAME_KANA_MEI"));
+				bean.setKanaSei(rs.getString("NAME_KANA_SEI"));
+				bean.setAccountId(rs.getString("ACCOUNT_ID"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				st.close();
+				con.close();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		return bean;
+	}
 }

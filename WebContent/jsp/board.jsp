@@ -58,6 +58,8 @@ function addPost(form, name, value) {
 				<br />
 				投稿日時：<%=data.getDate() %>
 				<br />
+				セッションID：<%=data.getSessionId() %>
+				<br />
 				<!-- セッションID -->
 				<input type="hidden" value="<%=data.getSessionId() %>"></input>
 				<br />

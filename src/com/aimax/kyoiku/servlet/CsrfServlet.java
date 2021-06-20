@@ -15,7 +15,7 @@ import com.aimax.kyoiku.constant.Const;
  * Servlet implementation class CsrfServlet
  */
 @WebServlet("/CsrfServlet")
-public class CsrfServlet extends HttpServlet {
+public class CsrfServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -23,18 +23,11 @@ public class CsrfServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		// ログインチェック
+		loginCheck(request, response);
 
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(Const.JSP_CSRF);
 	    dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

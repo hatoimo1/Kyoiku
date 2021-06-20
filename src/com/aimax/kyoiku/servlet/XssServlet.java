@@ -16,7 +16,7 @@ import com.aimax.kyoiku.constant.Const;
  * Servlet implementation class XssServlet
  */
 @WebServlet("/XssServlet")
-public class XssServlet extends HttpServlet {
+public class XssServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -24,8 +24,8 @@ public class XssServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		// ログインチェック
+		loginCheck(request, response);
 
 		// リクエスト情報取得
 		String forward;
@@ -49,13 +49,6 @@ public class XssServlet extends HttpServlet {
 
 	    RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
 	    dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

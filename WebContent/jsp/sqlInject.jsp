@@ -15,7 +15,7 @@
     <jsp:include page="header.jsp" flush="true" />
 
 	<form name="myform" action="/SqlInject" method="POST">
-		<span>アドレス検索</span>
+		<span>アカウント検索</span>
 		<input type="text" id="inputText" name="inputText" value=""></input>
 		<input type="submit" value="検索"></input>
 		<br/><br/>
@@ -26,7 +26,7 @@
 				<th style="background-color: #bde9ba">ID</th>
 				<th style="backgournd-color: #bde9ba">姓（カナ）</th>
 				<th style="backgournd-color: #bde9ba">名（カナ）</th>
-				<th style="backgournd-color: #bde9ba">アドレス</th>
+				<th style="backgournd-color: #bde9ba">アカウント</th>
 			</tr>
 			<%ArrayList<TableDataBean> list = (ArrayList)request.getAttribute("list");%>
 			<%for (TableDataBean data : list) { %>
